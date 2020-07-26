@@ -39,8 +39,7 @@ graph::~graph() {
     file.close();
 }
 
-void graph::adj_and_weight(const int size)
-{
+void graph::adj_and_weight(const int size) {
     int ny, nx, ic, jc;
     nx = 3; // number of elements in row in data file (except for first row which contains only the number of vertices)
     ny = sizefile/nx;
@@ -64,8 +63,7 @@ void graph::adj_and_weight(const int size)
             }
 }
 
-int graph::read_data()
-{
+int graph::read_data() {
     int counter = 0;
     int dummy;
 
@@ -86,13 +84,11 @@ int graph::read_data()
     return sizefile = counter;
 }
 
-bool graph::get_bool_val(int i, int j)
-{
+bool graph::get_bool_val(int i, int j) {
     return adj_matrix[i][j];
 }
 
-float graph::get_weight_val(int i, int j)
-{
+float graph::get_weight_val(int i, int j) {
     return weight2d[i][j];
 }
 
