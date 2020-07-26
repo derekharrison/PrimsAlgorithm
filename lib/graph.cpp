@@ -17,7 +17,7 @@ template <class T>
 T** array2D(T **p, const int size);
 
 template <class T>
-T** initarray2D(T **p, const int size);
+void initarray2D(T **p, const int size);
 
 template <class T>
 void free2D(T **p, int nodes);
@@ -118,12 +118,10 @@ T** array2D(T **p, const int size) {
 }
 
 template <class T>
-T** initarray2D(T **p, const int size) {
+void initarray2D(T **p, const int size) {
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j)
             p[i][j] = 0;
-
-    return p;
 }
 
 template <class T>
