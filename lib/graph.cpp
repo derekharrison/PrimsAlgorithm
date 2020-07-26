@@ -35,8 +35,6 @@ graph::~graph() {
     free2D(adj_matrix, size_graph);
     free2D(visited, size_graph);
     free2D(weight2d, size_graph);
-
-    file.close();
 }
 
 void graph::adj_and_weight(const int size) {
@@ -63,15 +61,14 @@ void graph::adj_and_weight(const int size) {
             }
 }
 
-int graph::read_data() {
-    int counter = 0;
+void graph::read_data() {
     int dummy;
+    int counter = 0;
 
     file.open(fname);
 
     if(!file.is_open()) {
         std::cout << "Error opening file" << std::endl;
-        return 1;
     }
 
     file >> size_graph;
@@ -81,7 +78,9 @@ int graph::read_data() {
         counter++;
     }
 
-    return sizefile = counter;
+    file.close();
+
+    sizefile = counter;
 }
 
 bool graph::get_bool_val(int i, int j) {
@@ -128,8 +127,8 @@ T** initarray2D(T **p, const int size) {
 }
 
 template <class T>
-void free2D(T **p, int nodes) {
-    for(int i = 0; i < nodes; ++i)
+void free2D(T **p, int size) {
+    for(int i = 0; i < size; ++i)
             delete [] p[i];
 
     delete [] p;

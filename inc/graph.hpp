@@ -29,7 +29,7 @@ public:
     float get_weight_val(int i, int j);
     void print_adj_matrix();
     void print_weight_matrix();
-    int read_data();
+    void read_data();
 };
 
 #endif /* GRAPH_HPP_ */
