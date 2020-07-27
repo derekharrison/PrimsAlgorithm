@@ -17,7 +17,9 @@ protected:
     float **weight2d;
     int size_graph;
     int sizefile;
-    std::vector <int> v;
+    std::vector <int> start_v;
+    std::vector <int> end_v;
+    std::vector <float> weight;
     std::fstream file;
 
 public:

@@ -38,9 +38,7 @@ graph::~graph() {
 }
 
 void graph::adj_and_weight(const int size) {
-    int ny, nx, ic, jc;
-    nx = 3; // number of elements in row in data file (except for first row which contains only the number of vertices)
-    ny = sizefile/nx;
+    int ic, jc;
 
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j) {
@@ -48,10 +46,10 @@ void graph::adj_and_weight(const int size) {
             weight2d[i][j] = 0.0;
         }
 
-    for(int i = 0; i < ny; ++i) {
-        ic = v[i*nx+0];
-        jc = v[i*nx+1];
-        weight2d[ic][jc] = v[i*nx+2];
+    for(int i = 0; i < sizefile; ++i) {
+        ic = start_v[i];
+        jc = end_v[i];
+        weight2d[ic][jc] = weight[i];
     }
 
     for(int i = 0; i < size; ++i)
@@ -62,7 +60,9 @@ void graph::adj_and_weight(const int size) {
 }
 
 void graph::read_data() {
-    int dummy;
+    int start_vertex;
+    int end_vertex;
+    float weight_edge;
     int counter = 0;
 
     file.open(fname);
@@ -73,8 +73,10 @@ void graph::read_data() {
 
     file >> size_graph;
 
-    while(file >> dummy) {
-        v.push_back(dummy);
+    while(file >> start_vertex >> end_vertex >> weight_edge) {
+        start_v.push_back(start_vertex);
+        end_v.push_back(end_vertex);
+        weight.push_back(weight_edge);
         counter++;
     }
 
