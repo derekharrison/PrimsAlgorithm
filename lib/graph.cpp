@@ -27,6 +27,8 @@ graph::graph() {
     adj_matrix = array2D(adj_matrix, size_graph);
     weight2d = array2D(weight2d, size_graph);
     visited = array2D(visited, size_graph);
+    initarray2D(adj_matrix, size_graph);
+    initarray2D(weight2d, size_graph);
     initarray2D(visited, size_graph);
     graph::adj_and_weight(size_graph);
 }
@@ -39,12 +41,6 @@ graph::~graph() {
 
 void graph::adj_and_weight(const int size) {
     int ic, jc;
-
-    for(int i = 0; i < size; ++i)
-        for(int j = 0; j < size; ++j) {
-            adj_matrix[i][j] = false;
-            weight2d[i][j] = 0.0;
-        }
 
     for(int i = 0; i < sizefile; ++i) {
         ic = start_v[i];
