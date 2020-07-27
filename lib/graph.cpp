@@ -27,7 +27,7 @@ graph::graph() {
     initarray2D(adj_matrix, size_graph);
     initarray2D(weight2d, size_graph);
     initarray2D(visited, size_graph);
-    graph::adj_and_weight(size_graph);
+    graph::adj_and_weight();
 }
 
 graph::~graph() {
@@ -61,7 +61,7 @@ void graph::read_data() {
     sizefile = counter;
 }
 
-void graph::adj_and_weight(const int size) {
+void graph::adj_and_weight() {
     int ic, jc;
 
     for(int i = 0; i < sizefile; ++i) {

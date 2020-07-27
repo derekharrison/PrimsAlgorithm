@@ -26,7 +26,7 @@ public:
     graph();
     ~graph();
 
-    void adj_and_weight(const int size_graph);
+    void adj_and_weight();
     bool get_bool_val(int i, int j);
     float get_weight_val(int i, int j);
     void print_adj_matrix();
