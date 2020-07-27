@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "../inc/functions.hpp"
 #include "../inc/graph.hpp"
 
 const char* fname = "./src/data_2.txt";
