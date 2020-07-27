@@ -39,22 +39,6 @@ graph::~graph() {
     free2D(weight2d, size_graph);
 }
 
-void graph::adj_and_weight(const int size) {
-    int ic, jc;
-
-    for(int i = 0; i < sizefile; ++i) {
-        ic = start_v[i];
-        jc = end_v[i];
-        weight2d[ic][jc] = weight[i];
-    }
-
-    for(int i = 0; i < size; ++i)
-        for(int j = 0; j < size; ++j)
-            if(weight2d[i][j] > 0.0) {
-                adj_matrix[i][j] = true;
-            }
-}
-
 void graph::read_data() {
     int start_vertex;
     int end_vertex;
@@ -79,6 +63,22 @@ void graph::read_data() {
     file.close();
 
     sizefile = counter;
+}
+
+void graph::adj_and_weight(const int size) {
+    int ic, jc;
+
+    for(int i = 0; i < sizefile; ++i) {
+        ic = start_v[i];
+        jc = end_v[i];
+        weight2d[ic][jc] = weight[i];
+    }
+
+    for(int i = 0; i < size; ++i)
+        for(int j = 0; j < size; ++j)
+            if(weight2d[i][j] > 0.0) {
+                adj_matrix[i][j] = true;
+            }
 }
 
 bool graph::get_bool_val(int i, int j) {
