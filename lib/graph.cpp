@@ -40,10 +40,9 @@ graph::~graph() {
 }
 
 void graph::read_data() {
-    int start_vertex;
-    int end_vertex;
-    float weight_edge;
+    int start_vertex, end_vertex;
     int counter = 0;
+    float weight_edge;
 
     file.open(fname);
 
