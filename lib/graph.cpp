@@ -42,7 +42,7 @@ void graph::adj_and_weight(const int size) {
 
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j) {
-            adj_matrix[i][j] = 0;
+            adj_matrix[i][j] = false;
             weight2d[i][j] = 0.0;
         }
 
