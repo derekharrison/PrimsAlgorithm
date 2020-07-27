@@ -71,13 +71,8 @@ void graph::adj_and_weight(const int size) {
         ic = start_v[i];
         jc = end_v[i];
         weight2d[ic][jc] = weight[i];
+        adj_matrix[ic][jc] = true;
     }
-
-    for(int i = 0; i < size; ++i)
-        for(int j = 0; j < size; ++j)
-            if(weight2d[i][j] > 0.0) {
-                adj_matrix[i][j] = true;
-            }
 }
 
 bool graph::get_bool_val(int i, int j) {
