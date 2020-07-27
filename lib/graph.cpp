@@ -108,7 +108,6 @@ void graph::print_weight_matrix() {
     printf("\n");
 }
 
-
 template <class T>
 T** array2D(T **p, const int size) {
     p = new T*[size];
