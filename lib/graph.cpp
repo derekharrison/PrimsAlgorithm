@@ -11,7 +11,7 @@
 #include "../inc/functions.hpp"
 #include "../inc/graph.hpp"
 
-const char* fname = "./src/data_2.txt";
+const char* fname = "./src/data_4.txt";
 
 template <class T>
 void initarray2D(T **p, const int size);
