@@ -32,8 +32,8 @@ int main(int argc, char* argv[])
     myg.get_edges_in_mst(edges_in_mst);
     float size_mst = myg.get_size_mst();
 
-    /* printing data */
-    std::cout << std::endl << "MST length: "
+    /* Printing data */
+    std::cout << "MST length: "
               << size_mst << std::endl;
 
     myg.min_spanning_tree();
