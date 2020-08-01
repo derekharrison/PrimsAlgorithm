@@ -32,6 +32,8 @@ public:
     void print_adj_matrix();
     void print_weight_matrix();
     void read_data();
+    int get_size_graph();
+    void get_edges_in_mst(bool** visited);
 };
 
 #endif /* GRAPH_HPP_ */

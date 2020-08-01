@@ -33,7 +33,7 @@ void prim::primalgo() {
     }
 }
 
-float prim::minpath() {
+float prim::get_size_mst() {
     return pathcounter;
 }
 

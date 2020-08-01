@@ -95,6 +95,17 @@ void graph::print_weight_matrix() {
     printf("\n");
 }
 
+int graph::get_size_graph() {
+	return this->size_graph;
+}
+
+void graph::get_edges_in_mst(bool** visited) {
+	for(int i = 0; i < size_graph; ++i)
+		for(int j = 0; j < size_graph; ++j) {
+			visited[i][j] = this->visited[i][j];
+		}
+}
+
 template <class T>
 void initarray2D(T **p, const int size) {
     for(int i = 0; i < size; ++i)

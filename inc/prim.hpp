@@ -27,8 +27,8 @@ public:
     }
 
     void primalgo();
-    float minpath();
     void min_spanning_tree();
+    float get_size_mst();
 };
 
 #endif /* PRIM_HPP_ */
