@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
     /* Creating prim object myg. Note: constructor reads file containing graph data */
     prim myg;
 
-    /* Allocate memory for edges in msp */
+    /* Allocate memory for edges in mst */
     int size_graph = myg.get_size_graph();
     bool** edges_in_mst = bool2D(size_graph);
 
