@@ -13,8 +13,8 @@ const float inf = 3e+8; //Arbitrary large value
 
 void prim::primalgo() {
     float temp;
-    pathcounter = 0.0;
     int js, ks;
+    this->total_path_mst = 0.0;
 
     for(int i = 0; i < size_graph - 1; ++i) {
         temp = inf;
@@ -31,12 +31,12 @@ void prim::primalgo() {
         }
         this->edges_in_mst[js][ks] = true;
         this->node_visited[ks] = true;
-        this->pathcounter += temp;
+        this->total_path_mst += temp;
     }
 }
 
 float prim::get_size_mst() {
-    return pathcounter;
+    return total_path_mst;
 }
 
 void prim::min_spanning_tree() {

@@ -14,12 +14,12 @@
 class prim : public graph {
 private:
     bool *node_visited, **edges_in_mst;
-    float pathcounter;
+    float total_path_mst;
 
 public:
     prim(bool** adj_mat, float** weight, int size_graph) : graph(adj_mat, weight, size_graph) {
     	this->node_visited = new bool[size_graph];
-    	this->pathcounter = 0.0;
+    	this->total_path_mst = 0.0;
         init(this->node_visited, size_graph);
         this->edges_in_mst = bool2D(size_graph);
         init_visited(this->edges_in_mst, size_graph);
