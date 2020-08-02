@@ -16,6 +16,7 @@
 
 #include "../inc/functions.hpp"
 #include "../inc/prim.hpp"
+#include "../inc/user_types.hpp"
 
 const char* file_name = "./src/data_4.txt";
 
