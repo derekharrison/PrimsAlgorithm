@@ -18,7 +18,7 @@
 #include "../inc/prim.hpp"
 #include "../inc/user_types.hpp"
 
-const char* file_name = "./src/data_4.txt";
+const char* file_name = "./src/data_3.txt";
 
 int main(int argc, char* argv[])
 {

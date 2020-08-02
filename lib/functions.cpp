@@ -10,7 +10,7 @@
 
 #include "../inc/functions.hpp"
 
-void init(bool* node_visited, int size_graph) {
+void init_node_visited(bool* node_visited, int size_graph) {
 	node_visited[0] = true;
 
     for(int i = 1; i < size_graph; ++i)
@@ -45,7 +45,7 @@ void init_weight_mat(float** weight_mat, int size) {
         }
 }
 
-void init_visited(bool** visited, int size) {
+void init_edges_in_mst(bool** visited, int size) {
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j) {
         	visited[i][j] = false;

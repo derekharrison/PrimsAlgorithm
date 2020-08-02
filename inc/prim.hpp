@@ -20,9 +20,9 @@ public:
     prim(bool** adj_mat, float** weight, int size_graph) : graph(adj_mat, weight, size_graph) {
     	this->node_visited = new bool[size_graph];
     	this->total_path_mst = 0.0;
-        init(this->node_visited, size_graph);
+    	init_node_visited(this->node_visited, size_graph);
         this->edges_in_mst = bool2D(size_graph);
-        init_visited(this->edges_in_mst, size_graph);
+        init_edges_in_mst(this->edges_in_mst, size_graph);
     }
     ~prim() {
     	delete_bool2D(this->edges_in_mst, size_graph);
