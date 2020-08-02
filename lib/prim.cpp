@@ -19,9 +19,9 @@ void prim::primalgo() {
     for(int i = 0; i < this->size_graph - 1; ++i) {
         temp = inf;
         for(int j = 0; j < this->size_graph; ++j) {
-            if(node_visited[j]) {
+            if(this->node_visited[j]) {
                 for(int k = 0; k < this->size_graph; ++k) {
-                    if(get_bool_val(j, k) && temp > get_weight_val(j, k) && !node_visited[k]) {
+                    if(get_bool_val(j, k) && temp > get_weight_val(j, k) && !this->node_visited[k]) {
                         temp = get_weight_val(j, k);
                         js = j;
                         ks = k;
