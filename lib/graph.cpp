@@ -42,6 +42,6 @@ void graph::print_adj_matrix() {
 void graph::print_weight_matrix() {
     for(int i = 0; i < this->size_graph; ++i)
         for(int j = 0; j < this->size_graph; ++j)
-            printf("weight2d[%i][%i]: %f\t", i, j, this->weight_mat[i][j]);
+            printf("weight_mat[%i][%i]: %f\t", i, j, this->weight_mat[i][j]);
     printf("\n");
 }
