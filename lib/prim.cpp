@@ -21,8 +21,8 @@ void prim::primalgo() {
         for(int j = 0; j < this->size_graph; ++j) {
             if(this->node_visited[j]) {
                 for(int k = 0; k < this->size_graph; ++k) {
-                    if(get_bool_val(j, k) && temp > get_weight_val(j, k) && !this->node_visited[k]) {
-                        temp = get_weight_val(j, k);
+                    if(is_connected(j, k) && temp > get_weight(j, k) && !this->node_visited[k]) {
+                        temp = get_weight(j, k);
                         js = j;
                         ks = k;
                     }

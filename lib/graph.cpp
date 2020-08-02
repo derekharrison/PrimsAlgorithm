@@ -23,11 +23,11 @@ graph::~graph() {
 	delete_float2D(this->weight_mat, this->size_graph);
 }
 
-bool graph::get_bool_val(int i, int j) {
+bool graph::is_connected(int i, int j) {
     return this->adj_mat[i][j];
 }
 
-float graph::get_weight_val(int i, int j) {
+float graph::get_weight(int i, int j) {
     return this->weight_mat[i][j];
 }
 

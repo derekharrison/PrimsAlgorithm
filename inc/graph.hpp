@@ -18,8 +18,8 @@ public:
     graph(bool** adj_mat, float** weight, int size_graph);
     ~graph();
 
-    bool get_bool_val(int i, int j);
-    float get_weight_val(int i, int j);
+    bool is_connected(int i, int j);
+    float get_weight(int i, int j);
     void print_adj_mat();
     void print_weight_matrix();
 };
