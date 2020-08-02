@@ -29,7 +29,7 @@ void prim::primalgo() {
                 }
             }
         }
-        visited[js][ks] = true;
+        edge_in_mst[js][ks] = true;
         node_visited[ks] = true;
         pathcounter += temp;
     }
@@ -44,7 +44,14 @@ void prim::min_spanning_tree() {
 
     for(int i = 0; i < size_graph; ++i)
         for(int j = 0; j < size_graph; ++j)
-            if(visited[i][j] == true) {
+            if(edge_in_mst[i][j] == true) {
                 printf("went from %i to %i, length: %f\n", i, j, weight2d[i][j]);
             }
+}
+
+void prim::get_edges_in_mst(bool** visited) {
+    for(int i = 0; i < size_graph; ++i)
+        for(int j = 0; j < size_graph; ++j) {
+            visited[i][j] = this->edge_in_mst[i][j];
+        }
 }

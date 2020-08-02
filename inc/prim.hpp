@@ -13,7 +13,7 @@
 
 class prim : public graph {
 private:
-    bool *node_visited;
+    bool *node_visited, **edge_in_mst;
     float pathcounter;
 
 public:
@@ -21,14 +21,18 @@ public:
     	node_visited = new bool[size_graph];
         pathcounter = 0.0;
         init(node_visited, size_graph);
+        edge_in_mst = bool2D(size_graph);
+        init_visited(edge_in_mst, size_graph);
     }
     ~prim() {
+    	delete_bool2D(edge_in_mst, size_graph);
         delete [] node_visited;
     }
 
     void primalgo();
     void min_spanning_tree();
     float get_size_mst();
+    void get_edges_in_mst(bool** visited);
 };
 
 #endif /* PRIM_HPP_ */

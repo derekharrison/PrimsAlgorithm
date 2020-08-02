@@ -12,7 +12,7 @@
 
 class graph {
 protected:
-    bool **adj_matrix, **visited;
+    bool **adj_matrix;
     float **weight2d;
     int size_graph;
 
@@ -24,7 +24,6 @@ public:
     float get_weight_val(int i, int j);
     void print_adj_matrix();
     void print_weight_matrix();
-    void get_edges_in_mst(bool** visited);
 };
 
 #endif /* GRAPH_HPP_ */
