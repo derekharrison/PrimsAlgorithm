@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
     /* Populate adjancy and weight matrices */
     adj_and_weight(sizefile, edge_set, weight2d, adj_matrix, size_graph);
 
-    /* Creating prim object myg. Note: constructor reads file containing graph data */
+    /* Creating prim object myg */
     prim myg(adj_matrix, weight2d, size_graph);
 
     /* Executing prims algorithm */
