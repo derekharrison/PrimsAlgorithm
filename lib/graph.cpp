@@ -11,65 +11,20 @@
 #include "../inc/functions.hpp"
 #include "../inc/graph.hpp"
 
-const char* fname = "./src/data_4.txt";
-
-template <class T>
-void initarray2D(T **p, const int size);
-
-template <class T>
-void free2D(T **p, int nodes);
-
-graph::graph() {
-    graph::read_data();
+graph::graph(bool** adj_mat, float** weight, int size_graph) {
+    this->size_graph = size_graph;
     adj_matrix = bool2D(size_graph);
     weight2d = float2D(size_graph);
     visited = bool2D(size_graph);
-    initarray2D(adj_matrix, size_graph);
-    initarray2D(weight2d, size_graph);
-    initarray2D(visited, size_graph);
-    graph::adj_and_weight();
+    init_visited(visited, size_graph);
+    set_adj_mat(this->adj_matrix, adj_mat, size_graph);
+    set_weight_mat(this->weight2d, weight, size_graph);
 }
 
 graph::~graph() {
-    free2D(adj_matrix, size_graph);
-    free2D(visited, size_graph);
-    free2D(weight2d, size_graph);
-}
-
-void graph::read_data() {
-    int start_vertex, end_vertex;
-    int counter = 0;
-    float weight_edge;
-
-    file.open(fname);
-
-    if(!file.is_open()) {
-        std::cout << "Error opening file" << std::endl;
-    }
-
-    file >> size_graph;
-
-    while(file >> start_vertex >> end_vertex >> weight_edge) {
-        start_v.push_back(start_vertex);
-        end_v.push_back(end_vertex);
-        weight.push_back(weight_edge);
-        counter++;
-    }
-
-    file.close();
-
-    sizefile = counter;
-}
-
-void graph::adj_and_weight() {
-    int ic, jc;
-
-    for(int i = 0; i < sizefile; ++i) {
-        ic = start_v[i];
-        jc = end_v[i];
-        weight2d[ic][jc] = weight[i];
-        adj_matrix[ic][jc] = true;
-    }
+	delete_bool2D(adj_matrix, size_graph);
+	delete_bool2D(visited, size_graph);
+	delete_float2D(weight2d, size_graph);
 }
 
 bool graph::get_bool_val(int i, int j) {
@@ -95,28 +50,9 @@ void graph::print_weight_matrix() {
     printf("\n");
 }
 
-int graph::get_size_graph() {
-	return this->size_graph;
-}
-
 void graph::get_edges_in_mst(bool** visited) {
-	for(int i = 0; i < size_graph; ++i)
-		for(int j = 0; j < size_graph; ++j) {
-			visited[i][j] = this->visited[i][j];
-		}
-}
-
-template <class T>
-void initarray2D(T **p, const int size) {
-    for(int i = 0; i < size; ++i)
-        for(int j = 0; j < size; ++j)
-            p[i][j] = 0;
-}
-
-template <class T>
-void free2D(T **p, int size) {
-    for(int i = 0; i < size; ++i)
-            delete [] p[i];
-
-    delete [] p;
+    for(int i = 0; i < size_graph; ++i)
+        for(int j = 0; j < size_graph; ++j) {
+            visited[i][j] = this->visited[i][j];
+        }
 }

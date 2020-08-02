@@ -13,17 +13,17 @@
 
 class prim : public graph {
 private:
-    bool *arrP;
+    bool *node_visited;
     float pathcounter;
 
 public:
-    prim() {
-        arrP = new bool[size_graph];
+    prim(bool** adj_mat, float** weight, int size_graph) : graph(adj_mat, weight, size_graph) {
+    	node_visited = new bool[size_graph];
         pathcounter = 0.0;
-        init(arrP, size_graph);
+        init(node_visited, size_graph);
     }
     ~prim() {
-        delete [] arrP;
+        delete [] node_visited;
     }
 
     void primalgo();

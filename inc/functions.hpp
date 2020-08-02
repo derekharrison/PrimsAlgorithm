@@ -8,8 +8,21 @@
 #ifndef FUNCTIONS_HPP_
 #define FUNCTIONS_HPP_
 
+#include <vector>
+
+#include "../inc/user_types.hpp"
+
 void init(bool* arrP, int size_graph);
+void set_adj_mat(bool** adj_mat, bool** adj_mat_ref, int size);
+void set_weight_mat(float** weight_mat, float** weight_mat_ref, int size);
+void init_adj_mat(bool** adj_mat, int size);
+void init_weight_mat(float** weight_mat, int size);
+void init_visited(bool** visited, int size);
+void adj_and_weight(int sizefile, std::vector <edge> edge_set, float** weight2d, bool** adj_matrix, int size_graph);
+void read_data(int& size_graph, int& sizefile, std::vector <edge>& edge_set, const char* file_name);
 bool** bool2D(const int size);
 float** float2D(const int size);
+void delete_bool2D(bool **p, int size);
+void delete_float2D(float **p, int size);
 
 #endif /* FUNCTIONS_HPP_ */

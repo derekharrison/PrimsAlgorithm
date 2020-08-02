@@ -5,6 +5,8 @@
  *      Author: d-w-h
  */
 
+#include <stdio.h>
+
 #include "../inc/prim.hpp"
 
 const float inf = 3e+8; //Arbitrary large value
@@ -17,9 +19,9 @@ void prim::primalgo() {
     for(int i = 0; i < size_graph - 1; ++i) {
         temp = inf;
         for(int j = 0; j < size_graph; ++j) {
-            if(arrP[j]) {
+            if(node_visited[j]) {
                 for(int k = 0; k < size_graph; ++k) {
-                    if(get_bool_val(j, k) && temp > get_weight_val(j, k) && !arrP[k]) {
+                    if(get_bool_val(j, k) && temp > get_weight_val(j, k) && !node_visited[k]) {
                         temp = get_weight_val(j, k);
                         js = j;
                         ks = k;
@@ -28,7 +30,7 @@ void prim::primalgo() {
             }
         }
         visited[js][ks] = true;
-        arrP[ks] = true;
+        node_visited[ks] = true;
         pathcounter += temp;
     }
 }
