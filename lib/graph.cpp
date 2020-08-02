@@ -5,7 +5,6 @@
  *      Author: d-w-h
  */
 
-#include <stdio.h>
 #include <iostream>
 
 #include "../inc/functions.hpp"

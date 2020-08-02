@@ -8,8 +8,6 @@
 #ifndef GRAPH_HPP_
 #define GRAPH_HPP_
 
-#include <vector>
-
 class graph {
 protected:
     bool **adj_matrix;
