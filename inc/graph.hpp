@@ -10,7 +10,7 @@
 
 class graph {
 protected:
-    bool **adj_matrix;
+    bool **adj_mat;
     float **weight_mat;
     int size_graph;
 
@@ -20,7 +20,7 @@ public:
 
     bool get_bool_val(int i, int j);
     float get_weight_val(int i, int j);
-    void print_adj_matrix();
+    void print_adj_mat();
     void print_weight_matrix();
 };
 

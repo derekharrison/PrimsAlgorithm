@@ -52,17 +52,17 @@ void init_edges_in_mst(bool** visited, int size) {
         }
 }
 
-void adj_and_weight(int sizefile, std::vector <edge> edge_set, float** weight2d, bool** adj_matrix, int size_graph) {
+void adj_and_weight(int sizefile, std::vector <edge> edge_set, float** weight2d, bool** adj_mat, int size_graph) {
     int ic, jc;
 
-    init_adj_mat(adj_matrix, size_graph);
+    init_adj_mat(adj_mat, size_graph);
     init_weight_mat(weight2d, size_graph);
 
     for(int i = 0; i < sizefile; ++i) {
         ic = edge_set[i].start_vertex;
         jc = edge_set[i].end_vertex;
         weight2d[ic][jc] = edge_set[i].weight;
-        adj_matrix[ic][jc] = true;
+        adj_mat[ic][jc] = true;
     }
 }
 

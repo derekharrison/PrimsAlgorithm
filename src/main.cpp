@@ -31,14 +31,14 @@ int main(int argc, char* argv[])
 
     /* Allocate memory for adjancy matrix, weight matrix and edges in mst */
     bool** edges_in_mst = bool2D(size_graph);
-    bool **adj_matrix = bool2D(size_graph);
+    bool **adj_mat = bool2D(size_graph);
     float **weight_mat = float2D(size_graph);
 
     /* Populate adjancy and weight matrices */
-    adj_and_weight(sizefile, edge_set, weight_mat, adj_matrix, size_graph);
+    adj_and_weight(sizefile, edge_set, weight_mat, adj_mat, size_graph);
 
     /* Creating prim object myg */
-    prim myg(adj_matrix, weight_mat, size_graph);
+    prim myg(adj_mat, weight_mat, size_graph);
 
     /* Executing prims algorithm */
     myg.primalgo();
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
 
     /* Free data */
     delete_bool2D(edges_in_mst, size_graph);
-    delete_bool2D(adj_matrix, size_graph);
+    delete_bool2D(adj_mat, size_graph);
     delete_float2D(weight_mat, size_graph);
 
     return 0;
