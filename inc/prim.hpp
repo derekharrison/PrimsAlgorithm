@@ -25,7 +25,7 @@ public:
         init_edges_in_mst(this->edges_in_mst, size_graph);
     }
     ~prim() {
-    	delete_bool2D(this->edges_in_mst, size_graph);
+    	delete_bool2D(this->edges_in_mst, this->size_graph);
         delete [] this->node_visited;
     }
 
