@@ -13,26 +13,26 @@
 
 class prim : public graph {
 private:
-    bool *node_visited, **edge_in_mst;
+    bool *node_visited, **edges_in_mst;
     float pathcounter;
 
 public:
     prim(bool** adj_mat, float** weight, int size_graph) : graph(adj_mat, weight, size_graph) {
-    	node_visited = new bool[size_graph];
-        pathcounter = 0.0;
-        init(node_visited, size_graph);
-        edge_in_mst = bool2D(size_graph);
-        init_visited(edge_in_mst, size_graph);
+    	this->node_visited = new bool[size_graph];
+    	this->pathcounter = 0.0;
+        init(this->node_visited, size_graph);
+        this->edges_in_mst = bool2D(size_graph);
+        init_visited(this->edges_in_mst, size_graph);
     }
     ~prim() {
-    	delete_bool2D(edge_in_mst, size_graph);
-        delete [] node_visited;
+    	delete_bool2D(this->edges_in_mst, size_graph);
+        delete [] this->node_visited;
     }
 
     void primalgo();
     void min_spanning_tree();
     float get_size_mst();
-    void get_edges_in_mst(bool** visited);
+    void get_edges_in_mst(bool** edges_in_mst);
 };
 
 #endif /* PRIM_HPP_ */

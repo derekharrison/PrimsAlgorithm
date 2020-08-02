@@ -29,9 +29,9 @@ void prim::primalgo() {
                 }
             }
         }
-        edge_in_mst[js][ks] = true;
-        node_visited[ks] = true;
-        pathcounter += temp;
+        this->edges_in_mst[js][ks] = true;
+        this->node_visited[ks] = true;
+        this->pathcounter += temp;
     }
 }
 
@@ -42,16 +42,16 @@ float prim::get_size_mst() {
 void prim::min_spanning_tree() {
     printf("\nMinimum spanning tree:\n\n");
 
-    for(int i = 0; i < size_graph; ++i)
-        for(int j = 0; j < size_graph; ++j)
-            if(edge_in_mst[i][j] == true) {
-                printf("went from %i to %i, length: %f\n", i, j, weight2d[i][j]);
+    for(int i = 0; i < this->size_graph; ++i)
+        for(int j = 0; j < this->size_graph; ++j)
+            if(this->edges_in_mst[i][j] == true) {
+                printf("went from %i to %i, length: %f\n", i, j, this->weight_mat[i][j]);
             }
 }
 
-void prim::get_edges_in_mst(bool** visited) {
-    for(int i = 0; i < size_graph; ++i)
-        for(int j = 0; j < size_graph; ++j) {
-            visited[i][j] = this->edge_in_mst[i][j];
+void prim::get_edges_in_mst(bool** edges_in_mst) {
+    for(int i = 0; i < this->size_graph; ++i)
+        for(int j = 0; j < this->size_graph; ++j) {
+        	edges_in_mst[i][j] = this->edges_in_mst[i][j];
         }
 }

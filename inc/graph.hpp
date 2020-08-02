@@ -13,7 +13,7 @@
 class graph {
 protected:
     bool **adj_matrix;
-    float **weight2d;
+    float **weight_mat;
     int size_graph;
 
 public:
