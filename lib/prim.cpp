@@ -16,11 +16,11 @@ void prim::primalgo() {
     int js, ks;
     this->total_path_mst = 0.0;
 
-    for(int i = 0; i < size_graph - 1; ++i) {
+    for(int i = 0; i < this->size_graph - 1; ++i) {
         temp = inf;
-        for(int j = 0; j < size_graph; ++j) {
+        for(int j = 0; j < this->size_graph; ++j) {
             if(node_visited[j]) {
-                for(int k = 0; k < size_graph; ++k) {
+                for(int k = 0; k < this->size_graph; ++k) {
                     if(get_bool_val(j, k) && temp > get_weight_val(j, k) && !node_visited[k]) {
                         temp = get_weight_val(j, k);
                         js = j;
