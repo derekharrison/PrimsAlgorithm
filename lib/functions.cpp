@@ -10,11 +10,11 @@
 
 #include "../inc/functions.hpp"
 
-void init(bool* arrP, int size_graph) {
-    arrP[0] = true;
+void init(bool* node_visited, int size_graph) {
+	node_visited[0] = true;
 
     for(int i = 1; i < size_graph; ++i)
-        arrP[i] = false;
+    	node_visited[i] = false;
 }
 
 void set_adj_mat(bool** adj_mat, bool** adj_mat_ref, int size) {
