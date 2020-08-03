@@ -32,6 +32,12 @@ void set_weight_mat(float** weight_mat, float** weight_mat_ref, int size) {
         }
 }
 
+void set_edge_set(std::vector <edge>& edge_set, std::vector <edge> edge_set_ref) {
+    for(unsigned int i = 0; i < edge_set_ref.size(); ++i) {
+        edge_set[i] = edge_set_ref[i];
+    }
+}
+
 void init_adj_mat(bool** adj_mat, int size) {
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j) {
@@ -54,7 +60,6 @@ void init_edges_in_mst(bool** visited, int size) {
 }
 
 void populate_adj_and_weight(bool** adj_mat, float** weight_mat, int size_graph, float density) {
-
     init_adj_mat(adj_mat, size_graph);
     init_weight_mat(weight_mat, size_graph);
 
@@ -71,6 +76,49 @@ void populate_adj_and_weight(bool** adj_mat, float** weight_mat, int size_graph,
                 }
             }
         }
+}
+
+void make_edge_set(bool** adj_mat, float** weight_mat, std::vector <edge>& edge_set, int size_graph) {
+    for(int i = 0; i < size_graph; ++i)
+        for(int j = 0; j < size_graph; ++j) {
+            if(adj_mat[i][j] == true) {
+                edge_set.push_back({i, j, weight_mat[i][j]});
+            }
+        }
+}
+
+void print_min_spanning_tree(bool** edges_in_mst, float** weight_mat, int size_graph) {
+    printf("\nMinimum spanning tree:\n\n");
+
+    for(int i = 0; i < size_graph; ++i)
+        for(int j = 0; j < size_graph; ++j)
+            if(edges_in_mst[i][j] == true) {
+                printf("went from %i to %i, length: %f\n", i, j, weight_mat[i][j]);
+            }
+}
+
+void print_adj_mat(bool** adj_mat, int size_graph) {
+    printf("\n Adjancy matrix:\n");
+
+    for(int i = 0; i < size_graph; ++i) {
+        for(int j = 0; j < size_graph; ++j) {
+            printf("(%i,%i): %d ", i, j, adj_mat[i][j]);
+        }
+        printf("\n");
+    }
+
+}
+
+void print_weight_mat(float** weight_mat, int size_graph) {
+    printf("\n Weight matrix:\n");
+
+    for(int i = 0; i < size_graph; ++i) {
+        for(int j = 0; j < size_graph; ++j) {
+            printf("(%i,%i): %.2f ", i, j, weight_mat[i][j]);
+        }
+        printf("\n");
+    }
+
 }
 
 bool check_unvisited(bool* node_visited, int size_graph) {

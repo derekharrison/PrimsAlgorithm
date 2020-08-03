@@ -18,18 +18,22 @@
 
 int main(int argc, char* argv[])
 {
-    int size_graph = 5;
+    int size_graph = 7;
     float size_mst = 0.0;
     float density_graph = 0.5;
     bool** edges_in_mst = bool2D(size_graph);
-    bool **adj_mat = bool2D(size_graph);
-    float **weight_mat = float2D(size_graph);
+    bool** adj_mat = bool2D(size_graph);
+    float** weight_mat = float2D(size_graph);
+    std::vector <edge> edge_set;
 
     /* Populate adjancy and weight matrices with random data*/
     populate_adj_and_weight(adj_mat, weight_mat, size_graph, density_graph);
 
+    /* Make edge vector */
+    make_edge_set(adj_mat, weight_mat, edge_set, size_graph);
+
     /* Creating prim object myg */
-    prim myg(adj_mat, weight_mat, size_graph);
+    prim myg(edge_set, size_graph);
 
     /* Executing prims algorithm */
     myg.primalgo();
@@ -39,13 +43,13 @@ int main(int argc, char* argv[])
     size_mst = myg.get_size_mst();
 
     /* Printing data */
-    myg.print_adj_mat();
-    myg.print_weight_matrix();
+    print_adj_mat(adj_mat, size_graph);
+    print_weight_mat(weight_mat, size_graph);
 
     std::cout << "MST length: "
               << size_mst << std::endl;
 
-    myg.min_spanning_tree();
+    print_min_spanning_tree(edges_in_mst, weight_mat, size_graph);
 
     /* Free data */
     delete_bool2D(edges_in_mst, size_graph);

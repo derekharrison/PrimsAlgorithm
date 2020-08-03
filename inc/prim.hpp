@@ -8,6 +8,8 @@
 #ifndef PRIM_HPP_
 #define PRIM_HPP_
 
+#include <vector>
+
 #include "functions.hpp"
 #include "graph.hpp"
 
@@ -17,7 +19,7 @@ private:
     float total_path_mst;
 
 public:
-    prim(bool** adj_mat, float** weight, int size_graph) : graph(adj_mat, weight, size_graph) {
+    prim(std::vector <edge> edge_set, int size_graph) : graph(edge_set, size_graph) {
     	this->node_visited = new bool[size_graph];
     	this->total_path_mst = 0.0;
     	init_node_visited(this->node_visited, size_graph);
