@@ -8,23 +8,18 @@
 #ifndef PRIM_HPP_
 #define PRIM_HPP_
 
-#include <vector>
-
 #include "functions.hpp"
 #include "graph.hpp"
-#include "user_types.hpp"
 
 class prim : public graph {
 private:
     bool *node_visited, **edges_in_mst;
-    int num_of_edges;
     float total_path_mst;
 
 public:
-    prim(std::vector <edge> edge_set, int size_graph, int num_edges) : graph(edge_set, size_graph) {
+    prim(bool** adj_mat, float** weight, int size_graph) : graph(adj_mat, weight, size_graph) {
     	this->node_visited = new bool[size_graph];
     	this->total_path_mst = 0.0;
-    	this->num_of_edges = num_edges;
     	init_node_visited(this->node_visited, size_graph);
         this->edges_in_mst = bool2D(size_graph);
         init_edges_in_mst(this->edges_in_mst, size_graph);

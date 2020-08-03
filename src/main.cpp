@@ -4,10 +4,8 @@
  *  Created on: 6 mrt. 2016
  *      Author: dharrison
  *
- *      An implementation of Prims algorithm for computing minimum spanning tree of a given graph
- *      Derek W. Harrison
- *
- *      Solution to assignment 3, course C++ for C programmers
+ *      An implementation of Prims algorithm for computing a
+ *      minimum spanning tree of a given graph.
  */
 
 
@@ -18,22 +16,20 @@
 #include "../inc/prim.hpp"
 #include "../inc/user_types.hpp"
 
-const char* file_name = "./src/data_5.txt";
-
 int main(int argc, char* argv[])
 {
-    int size_graph, num_edges;
-    float size_mst;
-    std::vector <edge> edge_set;
-
-    /* Retrieve graph data from file */
-    read_data(size_graph, num_edges, edge_set, file_name);
-
-    /* Allocate memory edges in mst */
+    int size_graph = 5;
+    float size_mst = 0.0;
+    float density_graph = 0.5;
     bool** edges_in_mst = bool2D(size_graph);
+    bool **adj_mat = bool2D(size_graph);
+    float **weight_mat = float2D(size_graph);
+
+    /* Populate adjancy and weight matrices with random data*/
+    populate_adj_and_weight(adj_mat, weight_mat, size_graph, density_graph);
 
     /* Creating prim object myg */
-    prim myg(edge_set, size_graph, num_edges);
+    prim myg(adj_mat, weight_mat, size_graph);
 
     /* Executing prims algorithm */
     myg.primalgo();
@@ -43,6 +39,9 @@ int main(int argc, char* argv[])
     size_mst = myg.get_size_mst();
 
     /* Printing data */
+    myg.print_adj_mat();
+    myg.print_weight_matrix();
+
     std::cout << "MST length: "
               << size_mst << std::endl;
 
@@ -50,6 +49,8 @@ int main(int argc, char* argv[])
 
     /* Free data */
     delete_bool2D(edges_in_mst, size_graph);
+    delete_bool2D(adj_mat, size_graph);
+    delete_float2D(weight_mat, size_graph);
 
     return 0;
 }

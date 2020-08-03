@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <time.h>
 
 #include "../inc/functions.hpp"
 
@@ -31,12 +32,6 @@ void set_weight_mat(float** weight_mat, float** weight_mat_ref, int size) {
         }
 }
 
-void set_edges(std::vector <edge>& edge_set, std::vector <edge> edge_set_ref) {
-    for(unsigned int i = 0; i < edge_set_ref.size(); ++i) {
-        edge_set.push_back(edge_set_ref[i]);
-    }
-}
-
 void init_adj_mat(bool** adj_mat, int size) {
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j) {
@@ -58,28 +53,34 @@ void init_edges_in_mst(bool** visited, int size) {
         }
 }
 
-void read_data(int& size_graph, int& sizefile, std::vector <edge>& edge_set, const char* file_name) {
-    int start_vertex, end_vertex;
-    int counter = 0;
-    float weight_edge;
-    std::fstream file;
+void populate_adj_and_weight(bool** adj_mat, float** weight_mat, int size_graph, float density) {
 
-    file.open(file_name);
+    init_adj_mat(adj_mat, size_graph);
+    init_weight_mat(weight_mat, size_graph);
 
-    if(!file.is_open()) {
-        std::cout << "Error opening file" << std::endl;
+    srand(time(NULL));
+    float max_weight = 10;
+    for(int i = 0; i < size_graph; ++i)
+        for(int j = i; j < size_graph; ++j) {
+            float rand_num = (float) rand() / RAND_MAX;
+            if(i != j) {
+                adj_mat[j][i] = adj_mat[i][j] = rand_num > (1 - density);
+                if(adj_mat[i][j] == true) {
+                    rand_num = (float) rand() / RAND_MAX;
+                    weight_mat[j][i] = weight_mat[i][j] = max_weight * rand_num;
+                }
+            }
+        }
+}
+
+bool check_unvisited(bool* node_visited, int size_graph) {
+    for(int i = 0; i < size_graph; ++i) {
+        if(node_visited[i] == false) {
+            return false;
+        }
     }
 
-    file >> size_graph;
-
-    while(file >> start_vertex >> end_vertex >> weight_edge) {
-        edge_set.push_back({start_vertex, end_vertex, weight_edge});
-        counter++;
-    }
-
-    file.close();
-
-    sizefile = counter;
+    return true;
 }
 
 bool** bool2D(const int size) {
