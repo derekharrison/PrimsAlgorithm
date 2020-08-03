@@ -14,5 +14,4 @@
 graph::graph(std::vector <edge> edge_set, int size_graph) {
     this->size_graph = size_graph;
     this->edge_set = edge_set;
-    set_edge_set(this->edge_set, edge_set);
 }

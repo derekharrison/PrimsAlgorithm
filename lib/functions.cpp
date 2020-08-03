@@ -32,12 +32,6 @@ void set_weight_mat(float** weight_mat, float** weight_mat_ref, int size) {
         }
 }
 
-void set_edge_set(std::vector <edge>& edge_set, std::vector <edge> edge_set_ref) {
-    for(unsigned int i = 0; i < edge_set_ref.size(); ++i) {
-        edge_set[i] = edge_set_ref[i];
-    }
-}
-
 void init_adj_mat(bool** adj_mat, int size) {
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j) {
