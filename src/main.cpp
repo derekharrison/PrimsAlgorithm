@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
     /* Retrieve graph data from file */
     read_data(size_graph, num_edges, edge_set, file_name);
 
-    /* Allocate memory for adjancy matrix, weight matrix and edges in mst */
+    /* Allocate memory edges in mst */
     bool** edges_in_mst = bool2D(size_graph);
 
     /* Creating prim object myg */
