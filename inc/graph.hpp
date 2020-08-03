@@ -19,8 +19,6 @@ protected:
 
 public:
     graph(std::vector <edge> edge_set, int size_graph);
-    void print_adj_mat();
-    void print_weight_matrix();
 };
 
 #endif /* GRAPH_HPP_ */

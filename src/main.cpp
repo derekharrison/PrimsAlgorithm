@@ -18,8 +18,7 @@
 
 int main(int argc, char* argv[])
 {
-    int size_graph = 7;
-    float size_mst = 0.0;
+    int size_graph = 6;
     float density_graph = 0.5;
     bool** edges_in_mst = bool2D(size_graph);
     bool** adj_mat = bool2D(size_graph);
@@ -40,7 +39,7 @@ int main(int argc, char* argv[])
 
     /* Getting data */
     myg.get_edges_in_mst(edges_in_mst);
-    size_mst = myg.get_size_mst();
+    float size_mst = myg.get_size_mst();
 
     /* Printing data */
     print_adj_mat(adj_mat, size_graph);
