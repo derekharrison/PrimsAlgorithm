@@ -31,6 +31,12 @@ void set_weight_mat(float** weight_mat, float** weight_mat_ref, int size) {
         }
 }
 
+void set_edges(std::vector <edge>& edge_set, std::vector <edge> edge_set_ref) {
+    for(unsigned int i = 0; i < edge_set_ref.size(); ++i) {
+        edge_set.push_back(edge_set_ref[i]);
+    }
+}
+
 void init_adj_mat(bool** adj_mat, int size) {
     for(int i = 0; i < size; ++i)
         for(int j = 0; j < size; ++j) {
@@ -50,20 +56,6 @@ void init_edges_in_mst(bool** visited, int size) {
         for(int j = 0; j < size; ++j) {
         	visited[i][j] = false;
         }
-}
-
-void adj_and_weight(int sizefile, std::vector <edge> edge_set, float** weight2d, bool** adj_mat, int size_graph) {
-    int ic, jc;
-
-    init_adj_mat(adj_mat, size_graph);
-    init_weight_mat(weight2d, size_graph);
-
-    for(int i = 0; i < sizefile; ++i) {
-        ic = edge_set[i].start_vertex;
-        jc = edge_set[i].end_vertex;
-        weight2d[ic][jc] = edge_set[i].weight;
-        adj_mat[ic][jc] = true;
-    }
 }
 
 void read_data(int& size_graph, int& sizefile, std::vector <edge>& edge_set, const char* file_name) {

@@ -18,27 +18,22 @@
 #include "../inc/prim.hpp"
 #include "../inc/user_types.hpp"
 
-const char* file_name = "./src/data_3.txt";
+const char* file_name = "./src/data_5.txt";
 
 int main(int argc, char* argv[])
 {
-    int size_graph, sizefile;
+    int size_graph, num_edges;
     float size_mst;
     std::vector <edge> edge_set;
 
     /* Retrieve graph data from file */
-    read_data(size_graph, sizefile, edge_set, file_name);
+    read_data(size_graph, num_edges, edge_set, file_name);
 
     /* Allocate memory for adjancy matrix, weight matrix and edges in mst */
     bool** edges_in_mst = bool2D(size_graph);
-    bool **adj_mat = bool2D(size_graph);
-    float **weight_mat = float2D(size_graph);
-
-    /* Populate adjancy and weight matrices */
-    adj_and_weight(sizefile, edge_set, weight_mat, adj_mat, size_graph);
 
     /* Creating prim object myg */
-    prim myg(adj_mat, weight_mat, size_graph);
+    prim myg(edge_set, size_graph, num_edges);
 
     /* Executing prims algorithm */
     myg.primalgo();
@@ -55,8 +50,6 @@ int main(int argc, char* argv[])
 
     /* Free data */
     delete_bool2D(edges_in_mst, size_graph);
-    delete_bool2D(adj_mat, size_graph);
-    delete_float2D(weight_mat, size_graph);
 
     return 0;
 }

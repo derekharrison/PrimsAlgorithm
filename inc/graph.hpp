@@ -8,15 +8,17 @@
 #ifndef GRAPH_HPP_
 #define GRAPH_HPP_
 
+#include <vector>
+
+#include "user_types.hpp"
+
 class graph {
 protected:
-    bool **adj_mat;
-    float **weight_mat;
+    std::vector <edge> edge_set;
     int size_graph;
 
 public:
-    graph(bool** adj_mat, float** weight, int size_graph);
-    ~graph();
+    graph(std::vector <edge> edge_set, int size_graph);
 
     bool is_connected(int i, int j);
     float get_weight(int i, int j);
