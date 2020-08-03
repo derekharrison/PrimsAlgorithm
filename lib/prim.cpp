@@ -44,7 +44,7 @@ void prim::primalgo() {
 }
 
 float prim::get_size_mst() {
-    return total_path_mst;
+    return this->total_path_mst;
 }
 
 void prim::get_edges_in_mst(bool** edges_in_mst) {
