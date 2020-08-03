@@ -20,7 +20,6 @@ void prim::primalgo() {
     bool unvisited_is_empty = check_unvisited(this->node_visited, this->size_graph);
     while(unvisited_is_empty == false) {
         temp = inf;
-
         for(unsigned int i = 0; i < this->edge_set.size(); ++i) {
             int start_vertex = this->edge_set[i].start_vertex;
             int end_vertex = this->edge_set[i].end_vertex;
