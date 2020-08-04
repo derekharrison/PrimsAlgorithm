@@ -10,7 +10,6 @@
 
 #include <vector>
 
-#include "functions.hpp"
 #include "user_types.hpp"
 
 class prim {
