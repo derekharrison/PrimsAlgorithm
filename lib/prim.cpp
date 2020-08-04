@@ -11,6 +11,22 @@
 
 const float inf = 3e+8; //Arbitrary large value
 
+prim::prim(std::vector <edge> edge_set, int size_graph){
+	this->total_path_mst = 0.0;
+    this->size_graph = size_graph;
+    this->edge_set = edge_set;
+	this->node_visited = new bool[size_graph];
+	init_node_visited(this->node_visited, size_graph);
+    this->edges_in_mst = bool2D(size_graph);
+    init_edges_in_mst(this->edges_in_mst, size_graph);
+
+}
+
+prim::~prim() {
+	delete_bool2D(this->edges_in_mst, this->size_graph);
+    delete [] this->node_visited;
+}
+
 void prim::primalgo() {
     float temp;
     int js = 0;
