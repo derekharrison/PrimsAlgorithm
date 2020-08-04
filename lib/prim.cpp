@@ -5,9 +5,10 @@
  *      Author: d-w-h
  */
 
-#include <stdio.h>
+#include <iostream>
 
 #include "../inc/prim.hpp"
+#include "../inc/user_types.hpp"
 
 const float inf = 3e+8; //Arbitrary large value
 
