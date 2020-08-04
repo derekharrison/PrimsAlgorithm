@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
     /* Populate adjancy and weight matrices with random data*/
     populate_adj_and_weight(adj_mat, weight_mat, size_graph, density_graph);
 
-    /* Make edge vector */
+    /* Make edge set */
     make_edge_set(adj_mat, weight_mat, edge_set, size_graph);
 
     /* Creating prim object myg */
