@@ -13,8 +13,6 @@
 #include "../inc/user_types.hpp"
 
 void init_node_visited(bool* node_visited, int size_graph);
-void set_adj_mat(bool** adj_mat, bool** adj_mat_ref, int size);
-void set_weight_mat(float** weight_mat, float** weight_mat_ref, int size);
 void init_adj_mat(bool** adj_mat, int size);
 void init_weight_mat(float** weight_mat, int size);
 void init_edges_in_mst(bool** visited, int size);

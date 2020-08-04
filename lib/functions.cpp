@@ -5,7 +5,6 @@
  *      Author: d-w-h
  */
 
-#include <fstream>
 #include <iostream>
 #include <time.h>
 
@@ -16,20 +15,6 @@ void init_node_visited(bool* node_visited, int size_graph) {
 
     for(int i = 1; i < size_graph; ++i)
     	node_visited[i] = false;
-}
-
-void set_adj_mat(bool** adj_mat, bool** adj_mat_ref, int size) {
-    for(int i = 0; i < size; ++i)
-        for(int j = 0; j < size; ++j) {
-            adj_mat[i][j] = adj_mat_ref[i][j];
-        }
-}
-
-void set_weight_mat(float** weight_mat, float** weight_mat_ref, int size) {
-    for(int i = 0; i < size; ++i)
-        for(int j = 0; j < size; ++j) {
-            weight_mat[i][j] = weight_mat_ref[i][j];
-        }
 }
 
 void init_adj_mat(bool** adj_mat, int size) {
