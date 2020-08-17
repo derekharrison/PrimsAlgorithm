@@ -19,6 +19,7 @@ void init_edges_in_mst(bool** visited, int size);
 void populate_adj_and_weight(bool** adj_mat, float** weight_mat, int size_graph, float density);
 void make_edge_set(bool** adj_mat, float** weight_mat, std::vector <edge>& edge_set, int size_graph);
 void print_min_spanning_tree(bool** edges_in_mst, float** weight_mat, int size_graph);
+double size_mst(float** weight_mat, bool** edges_in_mst, int size_graph);
 void print_adj_mat(bool** adj_mat, int size_graph);
 void print_weight_mat(float** weight_mat, int size_graph);
 bool check_unvisited(bool* node_visited, int size_graph);

@@ -14,7 +14,6 @@
 const float inf = 3e+8; //Arbitrary large value
 
 prim::prim(std::vector <edge> edge_set, int size_graph){
-    this->total_path_mst = 0.0;
     this->size_graph = size_graph;
     this->edge_set = edge_set;
     this->node_visited = new bool[size_graph];
@@ -34,7 +33,6 @@ void prim::primalgo() {
     int js = 0;
     int ks = 0;
     int it_counter = 0;
-    this->total_path_mst = 0.0;
     bool unvisited_is_empty = check_unvisited(this->node_visited, this->size_graph);
     while(unvisited_is_empty == false) {
         temp = inf;
@@ -51,7 +49,6 @@ void prim::primalgo() {
 
         this->edges_in_mst[js][ks] = true;
         this->node_visited[ks] = true;
-        this->total_path_mst += temp;
         unvisited_is_empty = check_unvisited(this->node_visited, this->size_graph);
         it_counter++;
         if(it_counter > this->size_graph + 2) {
@@ -59,10 +56,6 @@ void prim::primalgo() {
             break;
         }
     }
-}
-
-float prim::get_size_mst() {
-    return this->total_path_mst;
 }
 
 void prim::get_edges_in_mst(bool** edges_in_mst) {

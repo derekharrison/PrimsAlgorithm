@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <vector>
+#include <time.h>
 
 #include "../inc/functions.hpp"
 #include "../inc/prim.hpp"
@@ -18,7 +19,7 @@
 
 int main(int argc, char* argv[])
 {
-    int size_graph = 6;
+    int size_graph = 30;
     float density_graph = 0.5;
     bool** edges_in_mst = bool2D(size_graph);
     bool** adj_mat = bool2D(size_graph);
@@ -39,16 +40,11 @@ int main(int argc, char* argv[])
 
     /* Getting data */
     myg.get_edges_in_mst(edges_in_mst);
-    float size_mst = myg.get_size_mst();
+    double mst_size = size_mst(weight_mat, edges_in_mst, size_graph);
 
     /* Printing data */
-    print_adj_mat(adj_mat, size_graph);
-    print_weight_mat(weight_mat, size_graph);
-
-    std::cout << "MST length: "
-              << size_mst << std::endl;
-
     print_min_spanning_tree(edges_in_mst, weight_mat, size_graph);
+    printf("mst size: %.8f\n", mst_size);
 
     /* Free data */
     delete_bool2D(edges_in_mst, size_graph);
