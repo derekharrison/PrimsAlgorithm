@@ -68,24 +68,15 @@ void make_edge_set(bool** adj_mat, float** weight_mat, std::vector <edge>& edge_
 
 void print_min_spanning_tree(bool** edges_in_mst, float** weight_mat, int size_graph) {
     printf("\nMinimum spanning tree:\n\n");
-
+    double size_mst = 0.0;
     for(int i = 0; i < size_graph; ++i)
         for(int j = 0; j < size_graph; ++j)
-            if(edges_in_mst[i][j] == true) {
+            if(edges_in_mst[i][j]) {
+            	size_mst += weight_mat[i][j];
                 printf("went from %i to %i, length: %.4f\n", i, j, weight_mat[i][j]);
             }
-}
 
-double size_mst(float** weight_mat, bool** edges_in_mst, int size_graph) {
-	float total_weight_mst = 0.0;
-	for(int i = 0; i < size_graph; ++i)
-		for(int j = 0; j < size_graph; ++j) {
-            if(edges_in_mst[i][j]) {
-            	total_weight_mst += weight_mat[i][j];
-            }
-		}
-
-	return total_weight_mst;
+    printf("size mst: %.8f\n", size_mst);
 }
 
 void print_adj_mat(bool** adj_mat, int size_graph) {

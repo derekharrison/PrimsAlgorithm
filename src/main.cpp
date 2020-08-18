@@ -40,11 +40,9 @@ int main(int argc, char* argv[])
 
     /* Getting data */
     myg.get_edges_in_mst(edges_in_mst);
-    double mst_size = size_mst(weight_mat, edges_in_mst, size_graph);
 
     /* Printing data */
     print_min_spanning_tree(edges_in_mst, weight_mat, size_graph);
-    printf("mst size: %.8f\n", mst_size);
 
     /* Free data */
     delete_bool2D(edges_in_mst, size_graph);
